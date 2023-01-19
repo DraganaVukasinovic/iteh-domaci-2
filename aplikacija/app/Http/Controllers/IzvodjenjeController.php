@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\IzvodjenjeResource;
 use App\Models\Izvodjenje;
+use App\Models\Pozoriste;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class IzvodjenjeController extends Controller
 {
@@ -36,7 +38,25 @@ class IzvodjenjeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'datum' => 'required|string|max:50',
+            'pozoriste' => 'required|integer',
+            'predstava' => 'required|integer',
+ 
+        ]);
+
+        if ($validator->fails()) 
+            return response()->json($validator->errors());
+        $i = Izvodjenje::create([
+            'datum' => $request->datum, 
+            'pozoriste' => $request->pozoriste, 
+            'predstava' => $request->predstava,
+ 
+
+
+        ]);
+        $i->save();
+        return response()->json(['Objekat je  kreiran', $i]);
     }
 
     /**
@@ -68,9 +88,27 @@ class IzvodjenjeController extends Controller
      * @param  \App\Models\Izvodjenje  $izvodjenje
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Izvodjenje $izvodjenje)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'datum' => 'required|string|max:50',
+            'pozoriste' => 'required|integer',
+            'predstava' => 'required|integer',
+ 
+        ]);
+
+        if ($validator->fails()) 
+            return response()->json($validator->errors());
+        $i = Izvodjenje::find($id);
+        if($i){
+            $i->datum=$request->datum;
+            $i->pozoriste=$request->pozoriste;
+            $i->predstava=$request->predstava;
+            $i->save();
+            return response()->json( ["Uspesno izmenjeno!",$i]);
+        }else{
+            return response()->json("Objekat ne postoji u bazi");
+        }
     }
 
     /**
@@ -79,8 +117,11 @@ class IzvodjenjeController extends Controller
      * @param  \App\Models\Izvodjenje  $izvodjenje
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Izvodjenje $izvodjenje)
+    public function destroy($id)
     {
-        //
+        $i = Izvodjenje::find($id);
+        $i->delete();
+        return response()->json(["Objekat obrisan",$i]);
+
     }
 }

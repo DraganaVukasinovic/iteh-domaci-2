@@ -22,3 +22,7 @@ Route::get('/predstava/{id}',[PredstavaController::class,'show']);
 Route::get('/izvodjenje',[IzvodjenjeController::class,'index']);
 Route::get('/izvodjenje/{id}',[IzvodjenjeController::class,'show']);
 
+Route::delete('/izvodjenje/{id}',[IzvodjenjeController::class,'destroy']);
+Route::post('/izvodjenje',[IzvodjenjeController::class,'store']);
+
+Route::put('/izvodjenje/{id}',[IzvodjenjeController::class,'update']);
