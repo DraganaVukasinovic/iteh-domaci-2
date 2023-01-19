@@ -15,6 +15,10 @@ class CreatePozoristesTable extends Migration
     {
         Schema::create('pozoristes', function (Blueprint $table) {
             $table->id();
+            $table->string('naziv');
+            $table->string('adresa');            
+            $table->string('grad');
+
             $table->timestamps();
         });
     }

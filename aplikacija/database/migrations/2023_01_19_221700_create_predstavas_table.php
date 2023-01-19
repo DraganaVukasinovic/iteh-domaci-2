@@ -15,6 +15,10 @@ class CreatePredstavasTable extends Migration
     {
         Schema::create('predstavas', function (Blueprint $table) {
             $table->id();
+            $table->string('naziv');
+            $table->integer('cena_karte');
+            $table->string('opis');
+
             $table->timestamps();
         });
     }

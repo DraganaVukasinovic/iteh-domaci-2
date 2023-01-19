@@ -15,6 +15,10 @@ class CreateIzvodjenjesTable extends Migration
     {
         Schema::create('izvodjenjes', function (Blueprint $table) {
             $table->id();
+            $table->date('datum');
+            $table->foreignId('pozoriste');
+            $table->foreignId('predstava');
+
             $table->timestamps();
         });
     }
