@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthContoller;
 use App\Http\Controllers\IzvodjenjeController;
 use App\Http\Controllers\PredstavaController;
 use Illuminate\Http\Request;
@@ -15,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/register',[AuthController::class,'register']);
-Route::post('/login',[AuthController::class,'login']);
+Route::post('/register',[AuthContoller::class,'register']);
+Route::post('/login',[AuthContoller::class,'login']);
 
 Route::get('/predstava',[PredstavaController::class,'index']);
 Route::get('/predstava/{id}',[PredstavaController::class,'show']);
@@ -28,7 +29,7 @@ Route::get('/izvodjenje/{id}',[IzvodjenjeController::class,'show']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::post('/logout',[AuthController::class,'logout']);
+    Route::post('/logout',[AuthContoller::class,'logout']);
 
     Route::delete('/izvodjenje/{id}',[IzvodjenjeController::class,'destroy']);
     Route::post('/izvodjenje',[IzvodjenjeController::class,'store']);
