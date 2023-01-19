@@ -12,6 +12,7 @@ class Predstava extends Model
         'naziv',
         'cena_karte',
         'opis',
+        'trajanje' //u minutima
     ];
     public function izvodjenje()
     {

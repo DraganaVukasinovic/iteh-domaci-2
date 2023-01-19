@@ -14,7 +14,10 @@ class PozoristeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'naziv' => $this->faker->word(), //za naziv generise random rec
+            'adresa' => $this->faker->address(), //generise random adresu
+            'grad' =>  $this->faker->city(), // generise random grad
+       
         ];
     }
 }
