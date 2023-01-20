@@ -14,9 +14,9 @@ class Izvodjenje extends Model
         'predstava',
     ];
 
-    public function izvodjenje()
+    public function pozoriste()
     {
-        return $this->belongsTo(Izvodjenje::class);
+        return $this->belongsTo(Pozoriste::class);
     }
     public function predstava()
     {

@@ -31,7 +31,7 @@ class AddColumnTrajanjeTablePredstavas extends Migration
     {
         Schema::table('predstavas', function (Blueprint $table) {
           
-            $table->integer('trajanje');
+            $table->removeColumn('trajanje');
  
 
             

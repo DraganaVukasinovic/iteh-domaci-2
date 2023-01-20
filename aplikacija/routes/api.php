@@ -30,9 +30,9 @@ Route::get('/izvodjenje/{id}',[IzvodjenjeController::class,'show']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/logout',[AuthContoller::class,'logout']);
-
     Route::delete('/izvodjenje/{id}',[IzvodjenjeController::class,'destroy']);
     Route::post('/izvodjenje',[IzvodjenjeController::class,'store']);
-    
     Route::put('/izvodjenje/{id}',[IzvodjenjeController::class,'update']);
+
+    
 });
