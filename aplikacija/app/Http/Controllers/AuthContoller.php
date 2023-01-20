@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthContoller extends Controller
 {
-    public function login(Request $req)
+    public function login(Request $req)//post
     {
       $user = User::where("email", $req->email)->first();
       if (!$user || !Hash::check($req->password, $user->password)) {
@@ -20,7 +20,7 @@ class AuthContoller extends Controller
       return $user->createToken($user->email)->plainTextToken;
     }
     
-    public function register(Request $req)
+    public function register(Request $req)//post
     {
       $user = User::where("email", $req->email)->first();
       if ($user) {

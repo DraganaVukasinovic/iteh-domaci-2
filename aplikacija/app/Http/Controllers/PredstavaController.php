@@ -12,7 +12,7 @@ class PredstavaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()//get
     {
         return Predstava::all();
     }
@@ -44,7 +44,7 @@ class PredstavaController extends Controller
      * @param  \App\Models\Predstava  $predstava
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //get
     {
         return Predstava::find($id);
     }

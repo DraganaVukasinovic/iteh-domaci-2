@@ -17,6 +17,7 @@ class IzvodjenjeController extends Controller
      */
     public function index()
     {
+       
         return IzvodjenjeResource::collection(Izvodjenje::all());
     }
 
@@ -36,7 +37,7 @@ class IzvodjenjeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//post
     {
         $validator = Validator::make($request->all(), [
             'datum' => 'required|string|max:50',
@@ -88,7 +89,7 @@ class IzvodjenjeController extends Controller
      * @param  \App\Models\Izvodjenje  $izvodjenje
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)//put
     {
         $validator = Validator::make($request->all(), [
             'datum' => 'required|string|max:50',
@@ -117,7 +118,7 @@ class IzvodjenjeController extends Controller
      * @param  \App\Models\Izvodjenje  $izvodjenje
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)//delete
     {
         $i = Izvodjenje::find($id);
         $i->delete();
